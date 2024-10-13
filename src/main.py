@@ -3,27 +3,59 @@
 # throughout this file
 import pygame
 from constants import *
+from player import Player
 
 # Initialize Pygame
 pygame.init()
-
 
 # Set up the game window
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 pygame.display.set_caption("Asteroids Game")
 
+# Create a Clock object to manage frame rate
+clock = pygame.time.Clock()
+
+# Create the player object and place it in the center of the screen
+player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
+
+
+# Create groups for updatable and drawable objects
+updatable = pygame.sprite.Group()
+drawable = pygame.sprite.Group()
+
+# Add player to both groups
+updatable.add(player)
+drawable.add(player)
+
+
 def main():
 	""" Main Game Loop """
+	# Initialize the delta time (dt) variable
+	dt = 0
+
 	# Infinite game loop
 	while True:
 		# Handle events
 		for event in pygame.event.get():
 			if event.type == pygame.QUIT:
 				return 	# Exit the game loop if the user closes the window
+		
+		# Update all updatable objects
+		for obj in updatable:
+			obj.update(dt)
+		
 		# Step 3 : Draw everything to the screen
 		screen.fill((0, 0, 0 )) 	# Fill the screen with a solid black color
 		
+		# Draw all drawable objects
+		for obj in drawable:
+			obj.draw(screen)
+
 		pygame.display.flip()	# Refresh the screen (update display)
+
+		# Limit the frame rate to 60 FPS and update delta time
+		dt = clock.tick(60) / 1000 # Pause the loop to maintain 60 FPS and convert dt to seconds
+
 
 if __name__ == "__main__":
 	main()

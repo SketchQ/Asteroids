@@ -72,8 +72,20 @@ A simple recreation of the classic **Asteroids** game built using **Python** and
 - Bullets are small, fast-moving circles that destroy asteroids upon collision.
 - Bullets originate from the tip of the player's spaceship.
 
-## Next Steps and Features
-- Add screen wrapping (so objects reappear on the opposite side of the screen when they move off-screen).
-- Implement score tracking for destroyed asteroids.
-- Add increasing difficulty as the game progresses with more or faster asteroids.
+## Extending the project
+
+You've done all the required steps, but if you'd like to make the project your own, here are some ideas:
+
+- Add a scoring system
+- Implement multiple lives and respawning
+- Add an explosion effect for the asteroids
+- Add acceleration to the player movement
+- Make the objects wrap around the screen instead of disappearing
+- Add a background image
+- Create different weapon types
+- Make the asteroids lumpy instead of perfectly round
+- Make the ship have a triangular hit box instead of a circular one
+- Add a shield power-up
+- Add a speed power-up
+- Add bombs that can be dropped
 

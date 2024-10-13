@@ -4,6 +4,8 @@
 import pygame
 from constants import *
 from player import Player
+from asteroid import Asteroid
+from asteroidsfield import AsteroidField
 
 # Initialize Pygame
 pygame.init()
@@ -18,8 +20,8 @@ clock = pygame.time.Clock()
 # Create the player object and place it in the center of the screen
 player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
 
-
 # Create groups for updatable and drawable objects
+asteroids = pygame.sprite.Group()
 updatable = pygame.sprite.Group()
 drawable = pygame.sprite.Group()
 
@@ -27,6 +29,13 @@ drawable = pygame.sprite.Group()
 updatable.add(player)
 drawable.add(player)
 
+
+# Set the static containers field for the asteroid and AsteroidField Classes
+Asteroid.containers = (asteroids, updatable, drawable)
+AsteroidField.containers = (updatable,)
+
+# Create the AsteroidField object to spawn asteroids
+asteroid_field = AsteroidField()
 
 def main():
 	""" Main Game Loop """

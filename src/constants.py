@@ -13,3 +13,6 @@ PLAYER_SPEED = 200
 
 SHOT_RADIUS = 5  # The radius of the bullets
 PLAYER_SHOOT_SPEED = 500  # The speed of the bullets
+
+
+PLAYER_SHOOT_COOLDOWN = 0.3  # Time in seconds between shots

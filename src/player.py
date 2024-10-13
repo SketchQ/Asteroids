@@ -1,6 +1,6 @@
 import pygame
 from circleshape import CircleShape
-from constants import PLAYER_RADIUS,PLAYER_TURN_SPEED,PLAYER_SPEED, PLAYER_SHOOT_SPEED
+from constants import PLAYER_RADIUS,PLAYER_TURN_SPEED,PLAYER_SPEED, PLAYER_SHOOT_SPEED, PLAYER_SHOOT_COOLDOWN
 from shot import Shot
 
 class Player(CircleShape):
@@ -10,6 +10,8 @@ class Player(CircleShape):
 
         # Initialize rotation (angle in degrees)
         self.rotation = 0
+        # Initialize the shoot timer with 0
+        self.shoot_cooldown = 0
 
     # in the player class
     def triangle(self):
@@ -34,9 +36,17 @@ class Player(CircleShape):
 
     def shoot(self):
         """Fire a shot in the direction the player is facing"""
-        shot = Shot(self.position.x, self.position.y, self.rotation)
+        if self.shoot_cooldown <= 0 :
+            forward = pygame.Vector2(0, 1).rotate(self.rotation)
+            shot_position = self.position + forward * self.radius
+            shot = Shot(self.position.x, self.position.y, self.rotation)
+            self.shoot_cooldown = PLAYER_SHOOT_COOLDOWN # Reset the cooldown timer
 
     def update(self, dt):
+        # Decrease the shoot cooldown timer by dt
+        if self.shoot_cooldown > 0:
+            self.shoot_cooldown -= dt
+
         """Update the player's rotation based on input"""
         keys = pygame.key.get_pressed()
 

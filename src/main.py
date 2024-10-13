@@ -34,7 +34,7 @@ drawable.add(player)
 # Set the static containers field for the asteroid and AsteroidField Classes
 Asteroid.containers = (asteroids, updatable, drawable)
 AsteroidField.containers = (updatable,)
-Shot.containers = (shots, updatable, drawable) # Shots automatically added to groups
+Shot.containers = (shots, updatable, drawable) # Shots automatically added to
 
 # Create the AsteroidField object to spawn asteroids
 asteroid_field = AsteroidField()

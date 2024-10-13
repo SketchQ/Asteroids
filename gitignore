@@ -1,9 +1,0 @@
-# Ignore python compiled files
-*.py[cod]
-
-# Ignore virtual environments
-venv/
-
-# Ignore cache and log files
-__pycache__/
-*.log

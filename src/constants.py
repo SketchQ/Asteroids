@@ -9,3 +9,7 @@ ASTEROID_MAX_RADIUS = ASTEROID_MIN_RADIUS * ASTEROID_KINDS
 PLAYER_RADIUS = 20
 PLAYER_TURN_SPEED = 300 # Degrees per second
 PLAYER_SPEED = 200
+
+
+SHOT_RADIUS = 5  # The radius of the bullets
+PLAYER_SHOOT_SPEED = 500  # The speed of the bullets

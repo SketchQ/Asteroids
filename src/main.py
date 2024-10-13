@@ -53,6 +53,13 @@ def main():
 		for obj in updatable:
 			obj.update(dt)
 		
+		# Check for collisions between the player and asteroids
+		for asteroid in asteroids:
+			if player.is_colliding(asteroid):
+				print("Game over!")
+				pygame.quit()
+				return 	# Exit the game
+
 		# Step 3 : Draw everything to the screen
 		screen.fill((0, 0, 0 )) 	# Fill the screen with a solid black color
 		
